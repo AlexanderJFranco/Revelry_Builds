@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas>
+    <Texture>images/dev_assets/t1_atlas</Texture>
+    <Regions>
+        <Region name="player1" x="45" y="5" width="19" height="36" />
+    </Regions>
+    <Animations>
+        <Animation name="player1-animation" delay="200">
+            <Frame region="player1" />
+        </Animation>
+    </Animations>
+</TextureAtlas>

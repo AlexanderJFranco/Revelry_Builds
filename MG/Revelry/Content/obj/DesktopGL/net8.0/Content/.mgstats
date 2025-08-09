@@ -1,0 +1,6 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/MG/Revelry/Content/images/dev_assets/t1_atlas.png","C:\MG\Revelry\Content\bin\DesktopGL\Content\images/dev_assets/t1_atlas.png","CopyItem","File",4293,4293,0.0018699
+"C:/MG/Revelry/Content/images/dev_assets/t1_atlas.xml","C:\MG\Revelry\Content\bin\DesktopGL\Content\images/dev_assets/t1_atlas.xml","CopyItem","File",386,386,0.001054
+"C:/MG/Revelry/Content/images/dev_assets/tilesets/dev_grass_atlas.png","C:/MG/Revelry/Content/bin/DesktopGL/Content/images/dev_assets/tilesets/dev_grass_atlas.xnb","TextureProcessor","Texture2DContent",998,102485,0.0912012
+"C:/MG/Revelry/Content/images/dev_assets/tilesets/dev_grass-definition.xml","C:\MG\Revelry\Content\bin\DesktopGL\Content\images/dev_assets/tilesets/dev_grass-definition.xml","CopyItem","File",1573,1573,0.001011
+"C:/MG/Revelry/Content/images/dev_assets/tilesets/dev_tileset.png","C:/MG/Revelry/Content/bin/DesktopGL/Content/images/dev_assets/tilesets/dev_tileset.xnb","TextureProcessor","Texture2DContent",360276,1310805,0.0354194
