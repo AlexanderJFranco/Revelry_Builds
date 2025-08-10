@@ -10,7 +10,8 @@
         "dependencies": {
           "MonoGame.Content.Builder.Task": "3.8.4",
           "MonoGame.Framework.DesktopGL": "3.8.4",
-          "MonoGameLibrary": "1.0.0"
+          "MonoGameLibrary": "1.0.0",
+          "MoonSharp": "2.0.0"
         },
         "runtime": {
           "Revelry.dll": {}
@@ -80,7 +81,7 @@
           "runtimes/win-x64/native/openal.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "1.23.1.0"
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -99,7 +100,15 @@
           "runtimes/win-x64/native/SDL2.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "2.32.2.0"
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "MoonSharp/2.0.0": {
+        "runtime": {
+          "lib/netstandard1.6/MoonSharp.Interpreter.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
           }
         }
       },
@@ -119,7 +128,10 @@
       "System.ValueTuple/4.5.0": {},
       "MonoGameLibrary/1.0.0": {
         "runtime": {
-          "MonoGameLibrary.dll": {}
+          "MonoGameLibrary.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -157,6 +169,13 @@
       "sha512": "sha512-T4E2ppGlSTC2L9US1rxtdg3qTbarRzNId31xZoumUW9cf9Nq8nRQPMu9GzvZGrhfSySf0+UWPEj1rlicps+P/w==",
       "path": "monogame.library.sdl/2.32.2.1",
       "hashPath": "monogame.library.sdl.2.32.2.1.nupkg.sha512"
+    },
+    "MoonSharp/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uiAcRh7d+53k3xW9pFDJfAFVw4RnjHVCJG05M3oPAVEVwPtFavhg1H/IpC6So4X1j9kJlzuLlA3OghhPcIvc5A==",
+      "path": "moonsharp/2.0.0",
+      "hashPath": "moonsharp.2.0.0.nupkg.sha512"
     },
     "NVorbis/0.10.4": {
       "type": "package",

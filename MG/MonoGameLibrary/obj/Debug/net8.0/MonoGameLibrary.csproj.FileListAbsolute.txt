@@ -1,24 +1,37 @@
-C:\Users\Alexa\OneDrive\Desktop\New folder (2)\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.deps.json
-C:\Users\Alexa\OneDrive\Desktop\New folder (2)\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.dll
-C:\Users\Alexa\OneDrive\Desktop\New folder (2)\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.pdb
-C:\Users\Alexa\OneDrive\Desktop\New folder (2)\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.csproj.AssemblyReference.cache
-C:\Users\Alexa\OneDrive\Desktop\New folder (2)\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Alexa\OneDrive\Desktop\New folder (2)\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.AssemblyInfoInputs.cache
-C:\Users\Alexa\OneDrive\Desktop\New folder (2)\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.AssemblyInfo.cs
-C:\Users\Alexa\OneDrive\Desktop\New folder (2)\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.csproj.CoreCompileInputs.cache
-C:\Users\Alexa\OneDrive\Desktop\New folder (2)\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.dll
-C:\Users\Alexa\OneDrive\Desktop\New folder (2)\MonoGameLibrary\obj\Debug\net8.0\refint\MonoGameLibrary.dll
-C:\Users\Alexa\OneDrive\Desktop\New folder (2)\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.pdb
-C:\Users\Alexa\OneDrive\Desktop\New folder (2)\MonoGameLibrary\obj\Debug\net8.0\ref\MonoGameLibrary.dll
-C:\MG\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.deps.json
-C:\MG\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.dll
-C:\MG\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.pdb
-C:\MG\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.csproj.AssemblyReference.cache
-C:\MG\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.GeneratedMSBuildEditorConfig.editorconfig
-C:\MG\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.AssemblyInfoInputs.cache
-C:\MG\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.AssemblyInfo.cs
-C:\MG\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.csproj.CoreCompileInputs.cache
-C:\MG\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.dll
-C:\MG\MonoGameLibrary\obj\Debug\net8.0\refint\MonoGameLibrary.dll
-C:\MG\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.pdb
-C:\MG\MonoGameLibrary\obj\Debug\net8.0\ref\MonoGameLibrary.dll
+C:/Users/Alexa/OneDrive/Desktop/New folder (2)/MonoGameLibrary/bin/Debug/net8.0/MonoGameLibrary.deps.json
+C:/Users/Alexa/OneDrive/Desktop/New folder (2)/MonoGameLibrary/bin/Debug/net8.0/MonoGameLibrary.dll
+C:/Users/Alexa/OneDrive/Desktop/New folder (2)/MonoGameLibrary/bin/Debug/net8.0/MonoGameLibrary.pdb
+C:/Users/Alexa/OneDrive/Desktop/New folder (2)/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.csproj.AssemblyReference.cache
+C:/Users/Alexa/OneDrive/Desktop/New folder (2)/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/Alexa/OneDrive/Desktop/New folder (2)/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.AssemblyInfoInputs.cache
+C:/Users/Alexa/OneDrive/Desktop/New folder (2)/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.AssemblyInfo.cs
+C:/Users/Alexa/OneDrive/Desktop/New folder (2)/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.csproj.CoreCompileInputs.cache
+C:/Users/Alexa/OneDrive/Desktop/New folder (2)/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.dll
+C:/Users/Alexa/OneDrive/Desktop/New folder (2)/MonoGameLibrary/obj/Debug/net8.0/refint/MonoGameLibrary.dll
+C:/Users/Alexa/OneDrive/Desktop/New folder (2)/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.pdb
+C:/Users/Alexa/OneDrive/Desktop/New folder (2)/MonoGameLibrary/obj/Debug/net8.0/ref/MonoGameLibrary.dll
+C:/MG/MonoGameLibrary/bin/Debug/net8.0/MonoGameLibrary.deps.json
+C:/MG/MonoGameLibrary/bin/Debug/net8.0/MonoGameLibrary.dll
+C:/MG/MonoGameLibrary/bin/Debug/net8.0/MonoGameLibrary.pdb
+C:/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.csproj.AssemblyReference.cache
+C:/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.AssemblyInfoInputs.cache
+C:/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.AssemblyInfo.cs
+C:/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.csproj.CoreCompileInputs.cache
+C:/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.dll
+C:/MG/MonoGameLibrary/obj/Debug/net8.0/refint/MonoGameLibrary.dll
+C:/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.pdb
+C:/MG/MonoGameLibrary/obj/Debug/net8.0/ref/MonoGameLibrary.dll
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/bin/Debug/net8.0/MonoGameLibrary.deps.json
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/bin/Debug/net8.0/MonoGameLibrary.dll
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/bin/Debug/net8.0/MonoGameLibrary.pdb
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.csproj.AssemblyReference.cache
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.AssemblyInfoInputs.cache
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.AssemblyInfo.cs
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.csproj.CoreCompileInputs.cache
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.sourcelink.json
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.dll
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/obj/Debug/net8.0/refint/MonoGameLibrary.dll
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/obj/Debug/net8.0/MonoGameLibrary.pdb
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/obj/Debug/net8.0/ref/MonoGameLibrary.dll
