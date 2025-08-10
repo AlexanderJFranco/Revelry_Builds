@@ -268,19 +268,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/ajf/.nuget/packages/": {}
+    "C:\\Users\\Alexa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/MonoGameLibrary.csproj",
+      "projectUniqueName": "C:\\Repo\\Revelry_Builds\\MG\\MonoGameLibrary\\MonoGameLibrary.csproj",
       "projectName": "MonoGameLibrary",
-      "projectPath": "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/MonoGameLibrary.csproj",
-      "packagesPath": "/Users/ajf/.nuget/packages/",
-      "outputPath": "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/obj/",
+      "projectPath": "C:\\Repo\\Revelry_Builds\\MG\\MonoGameLibrary\\MonoGameLibrary.csproj",
+      "packagesPath": "C:\\Users\\Alexa\\.nuget\\packages\\",
+      "outputPath": "C:\\Repo\\Revelry_Builds\\MG\\MonoGameLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/ajf/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Alexa\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -303,8 +303,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.300"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -327,22 +326,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.19, 8.0.19]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.19, 8.0.19]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

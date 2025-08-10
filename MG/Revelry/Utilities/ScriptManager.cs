@@ -20,7 +20,6 @@ public class ScriptManager
 
         if (!File.Exists(path))
         {
-            Console.WriteLine("HERE  :  " + Environment.CurrentDirectory);
             throw new FileNotFoundException($"Lua script not found: {path}");
 
         }

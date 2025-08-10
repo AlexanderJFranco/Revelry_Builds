@@ -3,10 +3,14 @@
     <Texture>images/dev_assets/t1_atlas</Texture>
     <Regions>
         <Region name="player1" x="45" y="5" width="19" height="36" />
+        <Region name="vendor1" x="0" y="3" width="24" height="36" />
     </Regions>
     <Animations>
         <Animation name="player1-animation" delay="200">
             <Frame region="player1" />
+        </Animation>
+        <Animation name="vendor1-animation" delay="200">
+            <Frame region="vendor1" />
         </Animation>
     </Animations>
 </TextureAtlas>

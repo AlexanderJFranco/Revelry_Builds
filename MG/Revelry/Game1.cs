@@ -81,8 +81,8 @@ public class Game1 : Core
         
         // TODO: Add your drawing code here
         _tilemap.Draw(Core.SpriteBatch);
-        _player1.Draw();
         _obj.Draw();
+        _player1.Draw();
         base.Draw(gameTime);
         // Always end the sprite batch when finished.
         Core.SpriteBatch.End();
