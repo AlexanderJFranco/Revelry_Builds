@@ -39,6 +39,7 @@ public class Player1
 
 
 
+
     public event EventHandler BodyCollision;
 
     /// <summary>
@@ -85,18 +86,18 @@ public class Player1
         if (GameController.MoveLeft())
         {
             _position.X -= MOVEMENT_SPEED;
-            Console.WriteLine("Direction: " + potentialNextDirection + "Movement Timer: "+ _movementTimer);
+            Console.WriteLine("Direction: " + potentialNextDirection + "Movement Timer: " + _movementTimer);
         }
         if (GameController.MoveRight())
         {
             _position.X += MOVEMENT_SPEED;
             Console.WriteLine("Direction: " + potentialNextDirection);
         }
-        
+
 
     }
 
- 
+
     public void Update(GameTime gameTime)
     {
         // Update the animated sprite.
@@ -107,7 +108,7 @@ public class Player1
 
         // Increment the movement timer by the frame elapsed time.
         _movementTimer += gameTime.ElapsedGameTime;
-        
+
 
         // Update the movement lerp offset amount
         _movementProgress = (float)(_movementTimer.TotalSeconds / s_movementTime.TotalSeconds);
@@ -117,14 +118,23 @@ public class Player1
     public void Draw()
     {
         // Iterate through each segment and draw it
-        
-            // Calculate the visual position of the segment at the moment by
-            // lerping between its "at" and "to" position by the movement
-            // offset lerp amount
-            Vector2 pos = Vector2.Lerp(_position, _nextPosition, _movementProgress);
 
-            _sprite.Draw(Core.SpriteBatch, _position);
-      
+        // Calculate the visual position of the segment at the moment by
+        // lerping between its "at" and "to" position by the movement
+        // offset lerp amount
+        Vector2 pos = Vector2.Lerp(_position, _nextPosition, _movementProgress);
+
+        _sprite.Draw(Core.SpriteBatch, _position);
+
+    }
+
+    public Circle GetBounds()
+    {
+        int x = (int)(_position.X + _sprite.Width * 0.5f);
+        int y = (int)(_position.Y + _sprite.Height * 0.5f);
+        int radius = (int)(_sprite.Width * 0.25f);
+
+        return new Circle(x, y, radius);
     }
 
 

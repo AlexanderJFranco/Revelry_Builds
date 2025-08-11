@@ -14,7 +14,7 @@ namespace Revelry;
 
 public class Game1 : Core
 {
- 
+
 
     const int DEFAULT_WINDOW_WIDTH = 1280;
     const int DEFAULT_WINDOW_HEIGHT = 720;
@@ -36,14 +36,14 @@ public class Game1 : Core
         base.Initialize();
         _obj.Initialize();
         _player1.Initialize(Microsoft.Xna.Framework.Vector2.Zero);
-        
+
     }
 
     protected override void LoadContent()
     {
         //Create Script Manager
         _scriptManager = new ScriptManager();
-        
+
 
         // TODO: use this.Content to load your game content here
         // Create the texture atlas from the XML configuration file.
@@ -55,7 +55,7 @@ public class Game1 : Core
 
         //Create interactable object
         _obj = new Interactable(_scriptManager.GetScript(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../scripts", "audio_test.lua")));
-        
+
 
         _player1 = new Player1(player_animation);
         _tilemap = Tilemap.FromFile(Content, "images/dev_assets/tilesets/dev_grass-definition.xml");
@@ -69,7 +69,8 @@ public class Game1 : Core
 
         // TODO: Add your update logic here
         _player1.Update(gameTime);
-        _obj.Interact();
+        collisionChecks();
+        //_obj.Interact(); //would run test lua interact script, keeping in case I forget something
         base.Update(gameTime);
     }
 
@@ -78,7 +79,7 @@ public class Game1 : Core
         GraphicsDevice.Clear(Color.CornflowerBlue);
         Core.SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-        
+
         // TODO: Add your drawing code here
         _tilemap.Draw(Core.SpriteBatch);
         _obj.Draw();
@@ -86,6 +87,18 @@ public class Game1 : Core
         base.Draw(gameTime);
         // Always end the sprite batch when finished.
         Core.SpriteBatch.End();
-    
+        
+
+    }
+
+    private void collisionChecks()
+    {
+        Circle obj_bounds = _obj.GetBounds();
+        Circle player1_bounds = _player1.GetBounds();
+
+        if (player1_bounds.Intersects(obj_bounds))
+        {
+            Console.WriteLine("Touching");
+        }
     }
 }

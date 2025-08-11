@@ -79,5 +79,14 @@ public class Interactable
         }
     }
 
+  public Circle GetBounds()
+    {
+        Console.WriteLine(_sprite.Width);
+        int x = (int)(_position.X + _sprite.Width * 0.5f);
+        int y = (int)(_position.Y + _sprite.Height * 0.5f);
+        int radius = (int)(_sprite.Width * 0.25f);
+
+        return new Circle(x, y, radius);
+    }
 
 }
