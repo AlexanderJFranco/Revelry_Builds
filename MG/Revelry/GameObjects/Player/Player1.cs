@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoGameLibrary;
 using MonoGameLibrary.Graphics;
 
@@ -25,18 +26,15 @@ public class Player1
     // The AnimatedSprite used when drawing each slime segment
     private AnimatedSprite _sprite;
 
-    // Buffer to queue inputs input by player during input polling.
-    private Queue<Vector2> _inputBuffer;
 
-    // The maximum size of the buffer queue.
-    private const int MAX_BUFFER_SIZE = 2;
 
     // Speed multiplier when moving.
     private const float MOVEMENT_SPEED = 5.0f;
 
     private Vector2 _position;
     private Vector2 _nextPosition;
-
+    private bool _showInteractBox = false;
+    public RectZone _interactBox;
 
 
 
@@ -62,9 +60,8 @@ public class Player1
 
         // Zero out the movement timer.
         _movementTimer = TimeSpan.Zero;
+        _interactBox = new RectZone((int)_position.X, (int)_position.Y, 76, 164, true);
 
-        // initialize the input buffer.
-        _inputBuffer = new Queue<Vector2>(MAX_BUFFER_SIZE);
 
     }
 
@@ -93,6 +90,11 @@ public class Player1
             _position.X += MOVEMENT_SPEED;
             Console.WriteLine("Direction: " + potentialNextDirection);
         }
+        if (GameController.Action())
+        {
+
+        }
+        
 
 
     }
@@ -115,7 +117,7 @@ public class Player1
     }
 
 
-    public void Draw()
+    public void Draw(SpriteBatch spriteBatch, Boolean debug_Mode)
     {
         // Iterate through each segment and draw it
 
@@ -125,6 +127,10 @@ public class Player1
         Vector2 pos = Vector2.Lerp(_position, _nextPosition, _movementProgress);
 
         _sprite.Draw(Core.SpriteBatch, _position);
+
+        
+        _interactBox.Draw(Core.SpriteBatch, _position, Core._pixel, debug_Mode);
+
 
     }
 
@@ -137,6 +143,8 @@ public class Player1
         return new Circle(x, y, radius);
     }
 
+ 
 
+    public Vector2 getPosition() => _position;
 
 }

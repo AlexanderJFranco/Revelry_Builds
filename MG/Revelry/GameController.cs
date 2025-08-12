@@ -67,6 +67,13 @@ public static class GameController
                s_gamePad.WasButtonJustPressed(Buttons.Start);
     }
 
+    public static bool DebugToggle()
+    {
+      
+        return s_keyboard.IsKeyDown(Keys.OemTilde);
+               
+    }
+
     /// <summary>
     /// Returns true if the player has triggered the "action" button,
     /// typically used for menu confirmation.

@@ -21,6 +21,11 @@ public class Core : Game
     private static Scene s_activeScene;
     private static Scene s_nextScene;
 
+    public static Texture2D _pixel;
+
+   
+
+
     /// Gets the graphics device manager to control the presentation of graphics.
 
     public static GraphicsDeviceManager Graphics { get; private set; }
@@ -54,6 +59,7 @@ public class Core : Game
     /// Gets a reference to the audio control system.
     /// </summary>
     public static AudioController Audio { get; private set; }
+
 
 
     /// Creates a new Core instance.
@@ -96,6 +102,8 @@ public class Core : Game
 
         // Mouse is visible by default.
         IsMouseVisible = true;
+
+
     }
 
     protected override void Initialize()
@@ -114,6 +122,10 @@ public class Core : Game
 
         // Create a new audio controller.
         Audio = new AudioController();
+
+        //Set Debug Pixel Value to White
+        _pixel = new Texture2D(GraphicsDevice, 1, 1);
+        _pixel.SetData(new[] { Color.White });
     }
 
     protected override void UnloadContent()
@@ -152,7 +164,7 @@ public class Core : Game
         base.Update(gameTime);
 
     }
-    
+
     protected override void Draw(GameTime gameTime)
     {
         // If there is an active scene, draw it.
@@ -199,5 +211,7 @@ public class Core : Game
             s_activeScene.Initialize();
         }
     }
+
+   
 
 }

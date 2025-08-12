@@ -15,6 +15,7 @@ public class Interactable
     private AnimatedSprite _sprite;
     private TextureAtlas _textureAtlas;
     public event EventHandler BodyCollision;
+    
 
 
     public Interactable(Script script)
@@ -28,6 +29,9 @@ public class Interactable
     public void Initialize()
     {
 
+        //START// Pull object data from Lua Script
+
+        
         var objTable = _script.Globals.Get("object").Table;
 
         if (objTable == null)
@@ -43,6 +47,7 @@ public class Interactable
         // Read sprite name or other static data from Lua
         string _atlaspath = objTable.Get("atlas").String;
         string _spritePath = objTable.Get("sprite").String;
+        //END
 
         _textureAtlas = TextureAtlas.FromFile(Core.Content, _atlaspath);
         _sprite = _textureAtlas.CreateAnimatedSprite(_spritePath);
@@ -81,10 +86,9 @@ public class Interactable
 
   public Circle GetBounds()
     {
-        Console.WriteLine(_sprite.Width);
-        int x = (int)(_position.X + _sprite.Width * 0.5f);
-        int y = (int)(_position.Y + _sprite.Height * 0.5f);
-        int radius = (int)(_sprite.Width * 0.25f);
+        int x = (int)(_position.X + _sprite.Width );
+        int y = (int)(_position.Y + _sprite.Height );
+        int radius = (int)(_sprite.Width * 0.5f);
 
         return new Circle(x, y, radius);
     }
