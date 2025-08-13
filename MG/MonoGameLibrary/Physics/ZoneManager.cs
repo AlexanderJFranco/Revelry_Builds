@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+
+
+/*Summary
+The ZoneManager class tracks all RectZone objects in the current scene. The List of Zones will contain (RectZone, Interactable) so that
+the manager can track if a zone can be interacted with.
+*/
+public class ZoneManager
+{
+
+    //Constructor
+    private List<(RectZone, Interactable? obj)> zones = new();
+
+    //Add Zone to list
+    public void RegisterZone(RectZone zone, Interactable? obj = null)
+    {
+        zones.Add((zone, obj));
+    }
+
+    //Remove Zone from List
+    public void UnregisterZone(RectZone zone, Interactable? obj = null)
+    {
+        zones.Remove((zone, obj));
+    }
+
+    //Return list of all zones currently loaded into Manager
+    public List<(RectZone zone, Interactable? obj)> GetZones()
+    {
+        return zones;
+    }
+
+    //Check if an object has collided with a Non-Passable Zone - Walls, Obstacles, etc.
+    public bool CheckCollision(RectZone testZone, out RectZone collidedZone)
+    {
+        foreach (var (zone, _) in zones)
+        {
+            if (zone._zoneType == ZoneType.Solid && zone.Intersects(testZone))
+            {
+                collidedZone = zone;
+                return true;
+            }
+        }
+        collidedZone = default;
+        return false;
+    }
+
+    //Check if the object being intersected is an Interactive object
+    public Interactable? CheckInteractions(RectZone playerInteractZone)
+    {
+        foreach (var (zone, obj) in zones)
+        {
+            //Check for overlap
+            if (playerInteractZone.Intersects(zone))
+            {
+                return obj;
+            }
+        }
+        return null;
+    }
+
+
+
+}

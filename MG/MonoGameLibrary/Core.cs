@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary.Input;
 using MonoGameLibrary.Scenes;
+using System.IO;
 
 namespace MonoGameLibrary;
 
@@ -22,6 +23,8 @@ public class Core : Game
     private static Scene s_nextScene;
 
     public static Texture2D _pixel;
+
+    public static string scriptsFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "scripts");
 
    
 
@@ -59,6 +62,8 @@ public class Core : Game
     /// Gets a reference to the audio control system.
     /// </summary>
     public static AudioController Audio { get; private set; }
+
+    public ZoneManager ZoneManager;
 
 
 
@@ -116,6 +121,7 @@ public class Core : Game
 
         // Create the sprite batch instance.
         SpriteBatch = new SpriteBatch(GraphicsDevice);
+        ZoneManager = new ZoneManager();
 
         // Create a new input manager.
         Input = new InputManager();
@@ -212,6 +218,36 @@ public class Core : Game
         }
     }
 
-   
+   public static Color HexToColor(string hex)
+{
+    if (string.IsNullOrWhiteSpace(hex))
+        return Color.White;
+
+    // Remove "#" if present
+    hex = hex.Replace("#", "");
+
+    byte r, g, b, a = 255;
+
+    if (hex.Length == 6)
+    {
+        r = Convert.ToByte(hex.Substring(0, 2), 16);
+        g = Convert.ToByte(hex.Substring(2, 2), 16);
+        b = Convert.ToByte(hex.Substring(4, 2), 16);
+    }
+    else if (hex.Length == 8)
+    {
+        r = Convert.ToByte(hex.Substring(0, 2), 16);
+        g = Convert.ToByte(hex.Substring(2, 2), 16);
+        b = Convert.ToByte(hex.Substring(4, 2), 16);
+        a = Convert.ToByte(hex.Substring(6, 2), 16);
+    }
+    else
+    {
+        throw new ArgumentException("Invalid hex color length. Must be 6 or 8 characters.");
+    }
+
+    return new Color(r, g, b, a);
+}
+
 
 }

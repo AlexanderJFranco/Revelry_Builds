@@ -11,8 +11,9 @@ public class ScriptManager
     /// <summary>
     /// Loads a script from path or returns cached if already loaded.
     /// </summary>
-    public Script GetScript(string path)
+    public Script GetScript(string folder, string file)
     {
+        string path = Path.Combine(folder, file);
         if (_scriptCache.TryGetValue(path, out var cachedScript))
         {
             return cachedScript;
