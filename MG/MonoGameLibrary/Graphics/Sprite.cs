@@ -40,7 +40,7 @@ public void Draw(SpriteBatch spriteBatch, Vector2 position)
     /// <remarks>
     /// Default value is Color.White
     /// </remarks>
-    public Color Color { get; set; } = Color.White;
+public Color Color { get; set; } = Color.White;
 
 /// <summary>
 /// Gets or Sets the amount of rotation, in radians, to apply when rendering this sprite.

@@ -6,7 +6,7 @@ object = {
     atlas = "images/dev_assets/t1_atlas.xml",
     sprite = "vendor1-animation",
     hitbox_color = "#0000FF19",  
-    debug_enabled = false;
+    debug_enabled = true;
     physics_type = "Solid"
 }
 

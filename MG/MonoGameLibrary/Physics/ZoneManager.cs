@@ -30,6 +30,13 @@ public class ZoneManager
         return zones;
     }
 
+    public void OutputZones()
+    {
+        foreach (var (zone, obj) in zones)
+        {
+            Console.WriteLine("Object: " + obj +" X: " + zone.X + " Y: " + zone.Y + " Width: " + zone._width + " Height: " + zone._height);
+        }
+    }
     //Check if an object has collided with a Non-Passable Zone - Walls, Obstacles, etc.
     public bool CheckCollision(RectZone testZone, out RectZone collidedZone)
     {

@@ -15,9 +15,6 @@ public class Player1
     // The amount of time that has elapsed since the last movement update.
     private TimeSpan _movementTimer;
 
-    // Normalized value (0-1) representing progress between movement ticks for visual interpolation
-    private float _movementProgress;
-
     // The next direction to apply to the head of the slime chain during the
     // next movement update.
     private Vector2 _direction = Vector2.Zero;
@@ -36,7 +33,7 @@ public class Player1
     public RectZone _interactBox;
     //Tracks players current direct - Up, Down, Left, Right
     public Vector2 currentDirection;
-    //
+
     public Vector2 nextPosition = Vector2.Zero;
     public ZoneManager _zoneManager;
 
@@ -61,7 +58,7 @@ public class Player1
         
         // Zero out the movement timer.
         _movementTimer = TimeSpan.Zero;
-        _hitbox = new RectZone((int)_position.X, (int)_position.Y, (int)_sprite.Width, (int)_sprite.Height, ZoneType.Path, true);
+        _hitbox = new RectZone((int)_position.X, (int)_position.Y + (int)_sprite.Height/2 , (int)_sprite.Width, (int)_sprite.Height/2, ZoneType.Path, true);
         _interactBox = new RectZone((int)_position.X, (int)_position.Y, (int)_sprite.Width, (int)_sprite.Height, ZoneType.Path, true);
         
     }
@@ -76,27 +73,27 @@ public class Player1
 
             nextPosition.Y = _position.Y - MOVEMENT_SPEED;
             currentDirection = new Vector2((_position.X), (_position.Y - 60));
-            _interactBox = new RectZone((int)currentDirection.X, (int)currentDirection.Y, (int)_sprite.Width, 60, ZoneType.Solid, true);//Reposition zone for object Interaction to match player orientation - UP
+            _interactBox = new RectZone((int)currentDirection.X, (int)currentDirection.Y, (int)_sprite.Width, 60, ZoneType.Path, true);//Reposition zone for object Interaction to match player orientation - UP
         }
         if (GameController.MoveDown())
         {
             nextPosition.Y = _position.Y + MOVEMENT_SPEED;
             currentDirection = new Vector2((_position.X), (_position.Y + _sprite.Height));
-            _interactBox = new RectZone((int)currentDirection.X, (int)currentDirection.Y, (int)_sprite.Width, 60, ZoneType.Solid, true);//Reposition zone for object Interaction to match player orientation - DOWN
+            _interactBox = new RectZone((int)currentDirection.X, (int)currentDirection.Y, (int)_sprite.Width, 60, ZoneType.Path, true);//Reposition zone for object Interaction to match player orientation - DOWN
 
         }
         if (GameController.MoveLeft())
         {
             nextPosition.X = _position.X - MOVEMENT_SPEED;
             currentDirection = new Vector2((_position.X - 60), (_position.Y));
-            _interactBox = new RectZone((int)currentDirection.X, (int)currentDirection.Y, 60, (int)_sprite.Height, ZoneType.Solid, true);//Reposition zone for object Interaction to match player orientation - LEFT
+            _interactBox = new RectZone((int)currentDirection.X, (int)currentDirection.Y, 60, (int)_sprite.Height, ZoneType.Path, true);//Reposition zone for object Interaction to match player orientation - LEFT
 
         }
         if (GameController.MoveRight())
         {
             nextPosition.X = _position.X + MOVEMENT_SPEED;
             currentDirection = new Vector2((_position.X + _sprite.Width), (_position.Y));
-            _interactBox = new RectZone((int)currentDirection.X, (int)currentDirection.Y, 60, (int)_sprite.Height, ZoneType.Solid, true);//Reposition zone for object Interaction to match player orientation - RIGHT
+            _interactBox = new RectZone((int)currentDirection.X, (int)currentDirection.Y, 60, (int)_sprite.Height, ZoneType.Path, true);//Reposition zone for object Interaction to match player orientation - RIGHT
 
         }
         if (GameController.Action())
@@ -105,26 +102,46 @@ public class Player1
             if(interactable != null) { interactable.Interact(); }
         }
 
-        RectZone nextHitbox = new RectZone((int)nextPosition.X, (int)nextPosition.Y, (int)_sprite.Width, (int)_sprite.Height, ZoneType.Solid, true);
        
-        Vector2 horizontalTest = new Vector2(nextPosition.X, _position.Y);
-        RectZone horizontalZone = new RectZone((int)horizontalTest.X, (int)horizontalTest.Y,
-                                           (int)_sprite.Width, (int)_sprite.Height, ZoneType.Solid, true);
 
-        if (!_zoneManager.CheckCollision(horizontalZone, out _))
-        {
-            _position.X = horizontalTest.X;
-        }   
 
-        // Check vertical second
-        Vector2 verticalTest = new Vector2(_position.X, nextPosition.Y);
-        RectZone verticalZone = new RectZone((int)verticalTest.X, (int)verticalTest.Y,
-                                         (int)_sprite.Width, (int)_sprite.Height, ZoneType.Solid, true);
 
-        if (!_zoneManager.CheckCollision(verticalZone, out _))
-        {
-            _position.Y = verticalTest.Y;
-        }
+
+
+
+
+        // Keep the horizontal test at the player's next X, but Y starts halfway down the sprite
+        Vector2 horizontalTest = new Vector2(nextPosition.X, _position.Y + (int)(_sprite.Height / 2));
+
+        // Width covers the full sprite, height is half the sprite
+        RectZone horizontalZone = new RectZone(
+            (int)horizontalTest.X,
+            (int)horizontalTest.Y,
+            (int)_sprite.Width,
+            (int)(_sprite.Height / 2),
+            ZoneType.Solid,
+            true);
+
+// Only update X if no collision
+if (!_zoneManager.CheckCollision(horizontalZone, out _))
+{
+    _position.X = nextPosition.X; // <- use nextPosition.X, not horizontalTest.X
+}
+
+
+        Vector2 verticalTest = new Vector2(_position.X, nextPosition.Y + (int)(_sprite.Height / 2));
+        RectZone verticalZone = new RectZone(
+            (int)verticalTest.X,
+            (int)verticalTest.Y,
+            (int)_sprite.Width,
+            (int)(_sprite.Height / 2),
+            ZoneType.Solid,
+            true);
+
+if (!_zoneManager.CheckCollision(verticalZone, out _))
+{
+    _position.Y = nextPosition.Y;
+}
         
     }
 
@@ -135,21 +152,14 @@ public class Player1
 
         // Handle any player input
         HandleInput();
-
-        // Increment the movement timer by the frame elapsed time.
-        _movementTimer += gameTime.ElapsedGameTime;
-
-
-        // Update the movement lerp offset amount
-        _movementProgress = (float)(_movementTimer.TotalSeconds / s_movementTime.TotalSeconds);
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
         //Render Player1 sprite, hitbox, and interaction zone
         _sprite.Draw(Core.SpriteBatch, _position);
-        _hitbox.Draw(Core.SpriteBatch, _position, Core._pixel, GameController.DebugToggle(),new Color(255, 0, 0, 128) );//Hitbox for collision detection
-        _interactBox.Draw(Core.SpriteBatch, currentDirection, Core._pixel, GameController.DebugToggle(), new Color(0, 255, 0, 128));//Interaction zone used for player-object interactions
+        _hitbox.DisjointDraw(Core.SpriteBatch,new Vector2(_position.X, (int)_position.Y + (int)_sprite.Height/2), Core._pixel, GameController.DebugToggle(),new Color(255, 0, 0, 128) );//Hitbox for collision detection
+        _interactBox.DisjointDraw(Core.SpriteBatch, currentDirection, Core._pixel, GameController.DebugToggle(), new Color(0, 255, 0, 128));//Interaction zone used for player-object interactions
 
     }
 

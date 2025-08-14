@@ -68,6 +68,7 @@ public class Game1 : Core
             Exit();
 
         _player1.Update(gameTime);
+        _vendor.Update(gameTime);
         base.Update(gameTime);
     }
 
@@ -75,10 +76,11 @@ public class Game1 : Core
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
         Core.SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
-
+        _player1.Draw(Core.SpriteBatch);
+        
         //Level Drawing Start
         _tilemap.Draw(Core.SpriteBatch);
-        _vendor.Draw();
+        _vendor.Draw(Core.SpriteBatch);
         _player1.Draw(Core.SpriteBatch);
         base.Draw(gameTime);
         // Always end the sprite batch when finished.
