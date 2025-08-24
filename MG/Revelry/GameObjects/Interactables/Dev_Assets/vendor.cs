@@ -1,10 +1,8 @@
 using System;
-using Microsoft.VisualBasic;
 using Microsoft.Xna.Framework;
 using MonoGameLibrary;
 using MonoGameLibrary.Graphics;
 using MoonSharp.Interpreter;
-using System.Globalization;
 using Microsoft.Xna.Framework.Graphics;
 
 
@@ -18,16 +16,17 @@ public class Vendor : Interactable
     private AnimatedSprite _sprite;
     private TextureAtlas _textureAtlas;
     private Color _debugShader;
-    private Boolean _debugStatus;
+    private bool _debugStatus;
     public ZoneType _physics;
 
+
+
     //Constructor
-    public Vendor(Script script, ZoneManager zoneManager)
+    public Vendor(Script script)
     {
 
         _script = script;
-        ZoneManager = zoneManager;
-
+ 
     }
 
 
@@ -65,8 +64,8 @@ public class Vendor : Interactable
 
         //Assign inherited HitBox (Interactable Class)
         int _hitboxx = (int)_position.X;
-        int _hitboxy = (int)_position.Y + (int)_sprite.Height/2;
-        Hitbox = new RectZone(_hitboxx, _hitboxy, (int)_sprite.Width, (int)(_sprite.Height/2), ZoneType.Solid, _debugStatus, _debugShader);
+        int _hitboxy = (int)_position.Y + (int)_sprite.Height * (2/3);
+        Hitbox = new RectZone(_hitboxx, _hitboxy, (int)_sprite.Width, (int)(_sprite.Height)/3, ZoneType.Solid, _debugStatus, _debugShader);
         
 
     }
@@ -85,20 +84,23 @@ public class Vendor : Interactable
         _sprite.Draw(SpriteBatch, _position);
         //HitBox Dimensions
         
-        this.Hitbox.DisjointDraw(SpriteBatch,new Vector2(_position.X, _position.Y +  (int)(_sprite.Height/2)), Core._pixel,  _debugStatus, _debugShader);
-        ZoneManager.RegisterZone(Hitbox, this);    //Zone Manager accepts Zone and object to determine which areas are interactive
+        this.Hitbox.DisjointDraw(SpriteBatch,new Vector2(_position.X, _position.Y +  (int)_sprite.Height * 2/3), Core._pixel,  _debugStatus, _debugShader);
+        //Zone Manager accepts Zone and object to determine which areas are interactive
+        Core.ZoneManager.RegisterZone(Hitbox, this);    
 
     }
 
     //Object Function on Player Interaction
     public override void Interact()
     {
-        ZoneManager.OutputZones();
         var interactFunc = _script.Globals.Get("onInteract");
         if (interactFunc.Type == DataType.Function)
         {
             _script.Call(interactFunc);
         }
+        Core.DialogueManager.StartDialogue("Text");
+        
+        
     }
 
 }

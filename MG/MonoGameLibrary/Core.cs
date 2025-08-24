@@ -6,7 +6,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary.Input;
 using MonoGameLibrary.Scenes;
+using MonoGameLibrary.Utilities;
+using MonoGameLibrary.Physics;
 using System.IO;
+using MoonSharp.Interpreter;
 
 namespace MonoGameLibrary;
 
@@ -25,9 +28,6 @@ public class Core : Game
     public static Texture2D _pixel;
 
     public static string scriptsFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "scripts");
-
-   
-
 
     /// Gets the graphics device manager to control the presentation of graphics.
 
@@ -62,8 +62,12 @@ public class Core : Game
     /// Gets a reference to the audio control system.
     /// </summary>
     public static AudioController Audio { get; private set; }
+    
+    public static DialogueManager DialogueManager { get; private set; }
 
-    public ZoneManager ZoneManager;
+    public static ZoneManager ZoneManager { get; private set; }
+    public static ScriptManager ScriptManager { get; private set; }
+
 
 
 
@@ -113,6 +117,7 @@ public class Core : Game
 
     protected override void Initialize()
     {
+
         base.Initialize();
 
         // Set the core's graphics device to a reference of the base Game's
@@ -121,7 +126,6 @@ public class Core : Game
 
         // Create the sprite batch instance.
         SpriteBatch = new SpriteBatch(GraphicsDevice);
-        ZoneManager = new ZoneManager();
 
         // Create a new input manager.
         Input = new InputManager();
@@ -132,6 +136,10 @@ public class Core : Game
         //Set Debug Pixel Value to White
         _pixel = new Texture2D(GraphicsDevice, 1, 1);
         _pixel.SetData(new[] { Color.White });
+
+        ZoneManager = new ZoneManager();
+        DialogueManager = new DialogueManager();
+        ScriptManager = new ScriptManager();
     }
 
     protected override void UnloadContent()

@@ -13,6 +13,21 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Dialogue/dialogue_atlas.xml
+/copy:Dialogue/dialogue_atlas.xml
+
+#begin images/dev_assets/dev_textbox.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/dev_assets/dev_textbox.png
+
 #begin images/dev_assets/t1_atlas.png
 /copy:images/dev_assets/t1_atlas.png
 

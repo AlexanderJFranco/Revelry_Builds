@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGameLibrary.Physics;
 
 /*Summary
 The Interactable class is to be inherited by all objects the player can interact with: Chests, Doors, NPC's, etc

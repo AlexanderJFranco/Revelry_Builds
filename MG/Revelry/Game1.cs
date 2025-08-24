@@ -1,13 +1,10 @@
-﻿using System.Numerics;
-using System.Runtime.CompilerServices;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
+using MonoGameLibrary.Utilities;
 using MonoGameLibrary.Graphics;
 using Revelry.GameObjects;
-using System;
-using System.IO;
 
 
 namespace Revelry;
@@ -22,8 +19,7 @@ public class Game1 : Core
     private Player1 _player1;
     private Tilemap _tilemap;
     private Vendor _vendor;
-    private ScriptManager _scriptManager;
-    public ZoneManager _zoneManager;
+    private DialogueManager _dialogueManager;
 
     public Game1() : base("Revelry", DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, DEFAULT_FULLSCREEN)
     {
@@ -33,18 +29,19 @@ public class Game1 : Core
     protected override void Initialize()
     {
         base.Initialize();
+        _dialogueManager = Core.DialogueManager;
+        _dialogueManager.Initialize();
+        _vendor = new Vendor(Core.ScriptManager.GetScript(Core.scriptsFolder, "vendor.lua"));
         _vendor.Initialize();
         _player1.Initialize(Microsoft.Xna.Framework.Vector2.Zero);
+        
     }
 
     protected override void LoadContent()
     {
         base.LoadContent();
-        //Create Script Manager
-        _scriptManager = new ScriptManager();
 
-        //Create Zone Manager
-        _zoneManager = new ZoneManager();
+        
 
         // Create the texture atlas from the XML configuration file.
         TextureAtlas atlas = TextureAtlas.FromFile(Core.Content, "images/dev_assets/t1_atlas.xml");
@@ -53,12 +50,12 @@ public class Game1 : Core
         AnimatedSprite player_animation = atlas.CreateAnimatedSprite("player1-animation");
         player_animation.Scale = new Microsoft.Xna.Framework.Vector2(4.0f, 4.0f);
 
-        //Create interactable object
-       _vendor = new Vendor(_scriptManager.GetScript(Core.scriptsFolder, "vendor.lua"), _zoneManager);
 
-        _player1 = new Player1(player_animation, _zoneManager);
+        //create player instance
+        _player1 = new Player1(player_animation);
         _tilemap = Tilemap.FromFile(Content, "images/dev_assets/tilesets/dev_grass-definition.xml");
         _tilemap.Scale = new Microsoft.Xna.Framework.Vector2(4.0f, 4.0f);
+
 
     }
 
@@ -69,6 +66,8 @@ public class Game1 : Core
 
         _player1.Update(gameTime);
         _vendor.Update(gameTime);
+        Core.DialogueManager.Update(gameTime); 
+        // global update
         base.Update(gameTime);
     }
 
@@ -82,6 +81,10 @@ public class Game1 : Core
         _tilemap.Draw(Core.SpriteBatch);
         _vendor.Draw(Core.SpriteBatch);
         _player1.Draw(Core.SpriteBatch);
+        _dialogueManager.Draw(Core.SpriteBatch);
+        
+        
+
         base.Draw(gameTime);
         // Always end the sprite batch when finished.
         Core.SpriteBatch.End();

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-
+namespace MonoGameLibrary.Physics;
 /*Summary
 The ZoneManager class tracks all RectZone objects in the current scene. The List of Zones will contain (RectZone, Interactable) so that
 the manager can track if a zone can be interacted with.
@@ -55,11 +55,13 @@ public class ZoneManager
     //Check if the object being intersected is an Interactive object
     public Interactable? CheckInteractions(RectZone playerInteractZone)
     {
+        //Iterate over each zone and object pair within Zone manager
         foreach (var (zone, obj) in zones)
         {
             //Check for overlap
             if (playerInteractZone.Intersects(zone))
             {
+                //Return object being interacted with
                 return obj;
             }
         }
