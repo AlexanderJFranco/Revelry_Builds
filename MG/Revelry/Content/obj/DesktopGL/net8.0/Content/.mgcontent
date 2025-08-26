@@ -4,11 +4,13 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/Content/Fonts/PeaberryMono.spritefont</File>
     <File>/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/Content/images/dev_assets/dev_textbox.png</File>
     <File>/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/Content/images/dev_assets/tilesets/dev_grass_atlas.png</File>
     <File>/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/Content/images/dev_assets/tilesets/dev_tileset.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

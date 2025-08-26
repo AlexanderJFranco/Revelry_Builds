@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGameLibrary.ObjecTypes;
 using MonoGameLibrary.Physics;
 
 /*Summary
@@ -12,7 +13,7 @@ public abstract class Interactable
 {
     public RectZone Hitbox { get; protected set; }
     public ZoneManager ZoneManager { get; protected set; }
-    public abstract void Interact();
+    public abstract void Interact(PlayerIndex playerIndex);
     public abstract void Initialize();
     public abstract void Update(GameTime gameTime);
     public abstract void Draw(SpriteBatch? SpriteBatch);

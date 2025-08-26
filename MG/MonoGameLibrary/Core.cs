@@ -10,6 +10,7 @@ using MonoGameLibrary.Utilities;
 using MonoGameLibrary.Physics;
 using System.IO;
 using MoonSharp.Interpreter;
+using System.Collections.Generic;
 
 namespace MonoGameLibrary;
 
@@ -66,6 +67,7 @@ public class Core : Game
     public static DialogueManager DialogueManager { get; private set; }
 
     public static ZoneManager ZoneManager { get; private set; }
+    public static List<DialogueManager> DialogueManagers { get; private set; }
     public static ScriptManager ScriptManager { get; private set; }
 
 
@@ -138,7 +140,14 @@ public class Core : Game
         _pixel.SetData(new[] { Color.White });
 
         ZoneManager = new ZoneManager();
-        DialogueManager = new DialogueManager();
+        DialogueManagers = new List<DialogueManager>();
+
+        foreach (PlayerIndex index in Enum.GetValues(typeof(PlayerIndex)))
+        {
+            DialogueManagers.Add(new DialogueManager());
+        }
+        
+
         ScriptManager = new ScriptManager();
     }
 

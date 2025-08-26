@@ -119,3 +119,4 @@ C:/Repo/Revelry_Builds/MG/Revelry/obj/Debug/net8.0/ref/Revelry.dll
 /Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/bin/Debug/net8.0/Content/images/dev_assets/dev_textbox.xnb
 /Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/bin/Debug/net8.0/Content/Dialogue/dialogue_atlas.xml
 /Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/bin/Debug/net8.0/Content/Fonts/PeaberryBase.ttf
+/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/bin/Debug/net8.0/Content/Fonts/PeaberryMono.xnb

@@ -3,11 +3,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGameLibrary;
 using MonoGameLibrary.Graphics;
+using MonoGameLibrary.ObjecTypes;
 
 
 namespace Revelry.GameObjects;
 
-public class Player1
+public class Player1 : Players
 {
     private static readonly TimeSpan s_movementTime = TimeSpan.FromMilliseconds(200);
 
@@ -34,15 +35,11 @@ public class Player1
     public Vector2 currentDirection;
 
     public Vector2 nextPosition = Vector2.Zero;
-   
-
-    /// <summary>
-    /// Creates a new Slime using the specified animated sprite.
-    /// </summary>
-    /// <param name="sprite">The AnimatedSprite to use when drawing the slime.</param>
-    public Player1(AnimatedSprite sprite)
+      
+    public Player1(AnimatedSprite sprite, PlayerIndex playerIndex)
     {
         _sprite = sprite;
+        _playerIndex = playerIndex;
     }
 
     public void Initialize(Vector2 startingPosition)
@@ -50,7 +47,7 @@ public class Player1
 
         //Initialize where sprite will be initially drawn NOTE: This does not do the drawing, check Draw() function for that
         _position = startingPosition;
-        
+        Core.DialogueManagers[(int)_playerIndex].Initialize();
         // Zero out the movement timer.
         _movementTimer = TimeSpan.Zero;
         _hitbox = new RectZone((int)_position.X, (int)_position.Y + ((int)_sprite.Height), (int)_sprite.Width, (int)_sprite.Height/3, ZoneType.Path, true);
@@ -63,28 +60,28 @@ public class Player1
     {
 
         //START - PLAYER MOVEMENT CONTROLS
-        if (GameController.MoveUp())
+        if (GameController.MoveUp() && !Core.DialogueManagers[(int)_playerIndex].IsOpen)
         {
 
             nextPosition.Y = _position.Y - MOVEMENT_SPEED;
             currentDirection = new Vector2((_position.X), (_position.Y - 50));
             _interactBox = new RectZone((int)currentDirection.X, (int)currentDirection.Y, (int)_sprite.Width, 120, ZoneType.Path, true);//Reposition zone for object Interaction to match player orientation - UP
         }
-        if (GameController.MoveDown())
+        if (GameController.MoveDown()  && !Core.DialogueManagers[(int)_playerIndex].IsOpen)
         {
             nextPosition.Y = _position.Y + MOVEMENT_SPEED;
             currentDirection = new Vector2((_position.X), (_position.Y + _sprite.Height));
             _interactBox = new RectZone((int)currentDirection.X, (int)currentDirection.Y, (int)_sprite.Width, 90, ZoneType.Path, true);//Reposition zone for object Interaction to match player orientation - DOWN
 
         }
-        if (GameController.MoveLeft())
+        if (GameController.MoveLeft()  && !Core.DialogueManagers[(int)_playerIndex].IsOpen)
         {
             nextPosition.X = _position.X - MOVEMENT_SPEED;
             currentDirection = new Vector2((_position.X - 60), (_position.Y));
             _interactBox = new RectZone((int)currentDirection.X, (int)currentDirection.Y, 60, (int)_sprite.Height, ZoneType.Path, true);//Reposition zone for object Interaction to match player orientation - LEFT
 
         }
-        if (GameController.MoveRight())
+        if (GameController.MoveRight()  && !Core.DialogueManagers[(int)_playerIndex].IsOpen)
         {
             nextPosition.X = _position.X + MOVEMENT_SPEED;
             currentDirection = new Vector2((_position.X + _sprite.Width), (_position.Y));
@@ -92,13 +89,20 @@ public class Player1
 
         }
         //When player presses action, check if interactable object is within range
-        if (GameController.Action())
+        if (GameController.Action()  && !Core.DialogueManagers[(int)_playerIndex].IsOpen)
         {
             //Check zone manager if interactable object is overlapping with Player Interact Box
             var interactable = Core.ZoneManager.CheckInteractions(_interactBox);
             //Run interactable interact function
-            if (interactable != null) { interactable.Interact(); }
+            if (interactable != null) { interactable.Interact(_playerIndex); }
         }
+        if (GameController.Action()  && !Core.DialogueManagers[(int)_playerIndex].IsOpen)
+        {
+            //Check zone manager if interactable object is overlapping with Player Interact Box
+            var interactable = Core.ZoneManager.CheckInteractions(_interactBox);
+            //Run interactable interact function
+            if (interactable != null) { interactable.Interact(_playerIndex); }
+        }  
 
 
         // Keep the horizontal test at the player's next X, but Y starts halfway down the sprite

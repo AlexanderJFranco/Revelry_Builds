@@ -5,14 +5,13 @@ using MonoGameLibrary;
 using MonoGameLibrary.Utilities;
 using MonoGameLibrary.Graphics;
 using Revelry.GameObjects;
+using System;
 
 
 namespace Revelry;
 
 public class Game1 : Core
 {
-
-
     const int DEFAULT_WINDOW_WIDTH = 1280;
     const int DEFAULT_WINDOW_HEIGHT = 720;
     const bool DEFAULT_FULLSCREEN = false;
@@ -29,8 +28,8 @@ public class Game1 : Core
     protected override void Initialize()
     {
         base.Initialize();
-        _dialogueManager = Core.DialogueManager;
-        _dialogueManager.Initialize();
+        //_dialogueManager = Core.DialogueManager;
+        //_dialogueManager.Initialize();
         _vendor = new Vendor(Core.ScriptManager.GetScript(Core.scriptsFolder, "vendor.lua"));
         _vendor.Initialize();
         _player1.Initialize(Microsoft.Xna.Framework.Vector2.Zero);
@@ -40,9 +39,6 @@ public class Game1 : Core
     protected override void LoadContent()
     {
         base.LoadContent();
-
-        
-
         // Create the texture atlas from the XML configuration file.
         TextureAtlas atlas = TextureAtlas.FromFile(Core.Content, "images/dev_assets/t1_atlas.xml");
 
@@ -50,9 +46,8 @@ public class Game1 : Core
         AnimatedSprite player_animation = atlas.CreateAnimatedSprite("player1-animation");
         player_animation.Scale = new Microsoft.Xna.Framework.Vector2(4.0f, 4.0f);
 
-
         //create player instance
-        _player1 = new Player1(player_animation);
+        _player1 = new Player1(player_animation, PlayerIndex.One);
         _tilemap = Tilemap.FromFile(Content, "images/dev_assets/tilesets/dev_grass-definition.xml");
         _tilemap.Scale = new Microsoft.Xna.Framework.Vector2(4.0f, 4.0f);
 
@@ -64,9 +59,20 @@ public class Game1 : Core
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
+        if (Core.DialogueManagers[0].IsOpen)
+    {
+        if (GameController.Action() && Core.DialogueManagers[0].IsNodeFinished() == true)
+        {
+            Core.DialogueManagers[0].AdvanceDialogue();
+        }
+    }
+    else
+    {
         _player1.Update(gameTime);
+    }
+        
         _vendor.Update(gameTime);
-        Core.DialogueManager.Update(gameTime); 
+        Core.DialogueManagers[0].Update(gameTime, GameController.HoldCancel()); 
         // global update
         base.Update(gameTime);
     }
@@ -81,15 +87,13 @@ public class Game1 : Core
         _tilemap.Draw(Core.SpriteBatch);
         _vendor.Draw(Core.SpriteBatch);
         _player1.Draw(Core.SpriteBatch);
-        _dialogueManager.Draw(Core.SpriteBatch);
+        //_dialogueManager.Draw(Core.SpriteBatch);
+        DialogueManagers[0].Draw(Core.SpriteBatch);
         
-        
-
         base.Draw(gameTime);
+
         // Always end the sprite batch when finished.
         Core.SpriteBatch.End();
     }
 
-    
-   
 }

@@ -52,10 +52,10 @@ public static class GameController
     /// </summary>
     public static bool MoveRight()
     {
-       return Keyboard.GetState().IsKeyDown(Keys.Right) ||
-               Keyboard.GetState().IsKeyDown(Keys.D) ||
-               GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed ||
-               GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0.5f;
+        return Keyboard.GetState().IsKeyDown(Keys.Right) ||
+                Keyboard.GetState().IsKeyDown(Keys.D) ||
+                GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed ||
+                GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0.5f;
     }
 
     /// <summary>
@@ -69,9 +69,9 @@ public static class GameController
 
     public static bool DebugToggle()
     {
-      
+
         return s_keyboard.IsKeyDown(Keys.OemTilde);
-               
+
     }
 
     /// <summary>
@@ -82,5 +82,10 @@ public static class GameController
     {
         return s_keyboard.WasKeyJustPressed(Keys.Enter) ||
                s_gamePad.WasButtonJustPressed(Buttons.A);
+    }
+
+    public static bool HoldCancel()
+    {
+        return Keyboard.GetState().IsKeyDown(Keys.X);
     }
 }

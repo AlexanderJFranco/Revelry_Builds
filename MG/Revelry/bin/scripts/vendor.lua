@@ -6,35 +6,27 @@ object = {
     atlas = "images/dev_assets/t1_atlas.xml",
     sprite = "vendor1-animation",
     hitbox_color = "#0000FF19",  
-    debug_enabled = true;
+    debug_enabled = false;
     physics_type = "Solid"
 }
 
 dialogue = {
+    
     start = {
-        speaker = "Cal",
-        text = "Where am I?",
-        next = "guardian_intro"
-    },
-
-    guardian_intro = {
         speaker = "Guardian",
-        text = "You have entered the ancient halls...",
-        choices = {
-            { text = "Who are you?", next = "guardian_identity" },
-            { text = "I should leave.", next = "end" }
-        }
+        text = " Welcome!\n I wish I had more to offer but this\n is a bit of a work in progress.\n Please, make yourself at home!",
+        next = "intro"
     },
-
-    guardian_identity = {
+    intro = {
         speaker = "Guardian",
-        text = "I am bound to this spear.",
-        next = "end"
+        text = " More to come!",
+        next = "end_dialogue"
+            
     },
-
-    ["end"] = {
-        speaker = "Cal",
-        text = "..."
+    end_dialogue = {
+        speaker = "END",
+        text =  "END",
+        next = "END", 
     }
 }
 function onInteract()

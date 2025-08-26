@@ -16,6 +16,13 @@
 #begin Dialogue/dialogue_atlas.xml
 /copy:Dialogue/dialogue_atlas.xml
 
+#begin Fonts/PeaberryMono.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/PeaberryMono.spritefont
+
 #begin images/dev_assets/dev_textbox.png
 /importer:TextureImporter
 /processor:TextureProcessor

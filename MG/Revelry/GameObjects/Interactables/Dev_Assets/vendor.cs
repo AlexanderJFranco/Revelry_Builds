@@ -4,7 +4,7 @@ using MonoGameLibrary;
 using MonoGameLibrary.Graphics;
 using MoonSharp.Interpreter;
 using Microsoft.Xna.Framework.Graphics;
-
+using MonoGameLibrary.ObjecTypes;
 
 namespace Revelry.GameObjects;
 
@@ -18,6 +18,7 @@ public class Vendor : Interactable
     private Color _debugShader;
     private bool _debugStatus;
     public ZoneType _physics;
+    public bool _isTalking = false;
 
 
 
@@ -26,7 +27,7 @@ public class Vendor : Interactable
     {
 
         _script = script;
- 
+
     }
 
 
@@ -67,16 +68,13 @@ public class Vendor : Interactable
         int _hitboxy = (int)_position.Y + (int)_sprite.Height * (2/3);
         Hitbox = new RectZone(_hitboxx, _hitboxy, (int)_sprite.Width, (int)(_sprite.Height)/3, ZoneType.Solid, _debugStatus, _debugShader);
         
-
     }
-
 
     public override void Update(GameTime gameTime)
     {
-        _sprite.Update(gameTime);
+        _sprite.Update(gameTime);      
         
     }
-
 
     public override void Draw(SpriteBatch SpriteBatch)
     {
@@ -91,15 +89,18 @@ public class Vendor : Interactable
     }
 
     //Object Function on Player Interaction
-    public override void Interact()
+    public override void Interact(PlayerIndex playerIndex)
     {
         var interactFunc = _script.Globals.Get("onInteract");
         if (interactFunc.Type == DataType.Function)
         {
             _script.Call(interactFunc);
         }
-        Core.DialogueManager.StartDialogue("Text");
+
+
+        Core.DialogueManagers[(int)playerIndex].LoadDialogue(_script.Globals.Get("dialogue").Table);
         
+            
         
     }
 
