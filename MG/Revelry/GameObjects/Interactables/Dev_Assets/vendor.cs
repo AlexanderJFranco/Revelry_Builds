@@ -1,10 +1,9 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoGameLibrary;
 using MonoGameLibrary.Graphics;
 using MoonSharp.Interpreter;
-using Microsoft.Xna.Framework.Graphics;
-using MonoGameLibrary.ObjecTypes;
 
 namespace Revelry.GameObjects;
 

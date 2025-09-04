@@ -30,7 +30,7 @@ public class DialogueManager
     _dialogueBox = new DialogueBox();
     _dialogueBox.LoadContent();
   }
-  public void Update(GameTime gameTime, bool skip)
+  public void Update(GameTime gameTime, bool proceed, bool skip)
   {
     IsOpen = _dialogueBox.IsOpen;
 
@@ -38,10 +38,20 @@ public class DialogueManager
     {
       _dialogueBox.Update(gameTime, skip);
     }
+
+    if (Core.DialogueManagers[0].IsOpen)
+    {
+      if (proceed && Core.DialogueManagers[0].IsNodeFinished() == true)
+      {
+        Core.DialogueManagers[0].AdvanceDialogue();
+      }
+    }
+
+
   }
   public void StartDialogue()
   {
-    _dialogueBox.Open(_currentNode.Text);
+    _dialogueBox.Open(_currentNode);
   }
   public void AdvanceDialogue()
   {
@@ -53,7 +63,7 @@ public class DialogueManager
     if (_currentNode.Key.Equals("end_dialogue")) { EndDialogue(); }
 
     //Else open dialogue box with new node
-    else { _dialogueBox.Open(_currentNode.Text); }
+    else { _dialogueBox.Open(_currentNode); }
     
     
   }
@@ -71,13 +81,36 @@ public class DialogueManager
       string key = pair.Key.String;
       Table nodeTable = pair.Value.Table;
 
+
+      if (nodeTable.Get("choices").Type == DataType.Table)
+      {
+        var choices = new List<Dictionary<string, string>>();
+        Table choicesTable = nodeTable.Get("choices").Table;
+
+        foreach (var choicePair in choicesTable.Pairs)
+        {
+          var choiceTable = choicePair.Value.Table;
+
+          var dict = new Dictionary<string, string>
+                {
+                    { "text", choiceTable.Get("text").String },
+                    { "next", choiceTable.Get("next").String }
+                };
+
+          choices.Add(dict);
+        }
+      }
+
+
       var node = new DialogueNode()
       {
-       
+
         Key = key,
         Speaker = nodeTable.Get("speaker").String,
         Text = nodeTable.Get("text").String,
-        Next = nodeTable.Get("next").String
+        Next = nodeTable.Get("next").String,
+        
+        
       };
       
       _dialoguePath[key] = node;
@@ -95,11 +128,8 @@ public class DialogueManager
   {
     return _dialogueBox.IsFinished;
   }
-  public void forceEndText()
-  {
-    
-  }
-
+ 
+  
   public bool HasChoices => _currentNode?.Choices?.Count > 0;
     
   }

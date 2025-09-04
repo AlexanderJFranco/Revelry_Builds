@@ -1,8 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGameLibrary.ObjecTypes;
-using MonoGameLibrary.Physics;
-
 /*Summary
 The Interactable class is to be inherited by all objects the player can interact with: Chests, Doors, NPC's, etc
 Includes:
@@ -11,9 +8,11 @@ Includes:
 */
 public abstract class Interactable
 {
+    //Collision hitbox for object
     public RectZone Hitbox { get; protected set; }
-    public ZoneManager ZoneManager { get; protected set; }
+    //Interact function for when player actions object
     public abstract void Interact(PlayerIndex playerIndex);
+    //Initialize object
     public abstract void Initialize();
     public abstract void Update(GameTime gameTime);
     public abstract void Draw(SpriteBatch? SpriteBatch);

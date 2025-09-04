@@ -47,10 +47,14 @@ public class Player1 : Players
 
         //Initialize where sprite will be initially drawn NOTE: This does not do the drawing, check Draw() function for that
         _position = startingPosition;
+        //Initialize player Dialogue Manager at player index
         Core.DialogueManagers[(int)_playerIndex].Initialize();
         // Zero out the movement timer.
         _movementTimer = TimeSpan.Zero;
+
+        //Build area to serve as player object hitbox
         _hitbox = new RectZone((int)_position.X, (int)_position.Y + ((int)_sprite.Height), (int)_sprite.Width, (int)_sprite.Height/3, ZoneType.Path, true);
+        //Build area to serve as player object interaction range
         _interactBox = new RectZone((int)_position.X, (int)_position.Y, (int)_sprite.Width, (int)_sprite.Height, ZoneType.Path, true);
         
     }
@@ -59,12 +63,14 @@ public class Player1 : Players
     private void HandleInput()
     {
 
-        //START - PLAYER MOVEMENT CONTROLS
+        //START - PLAYER MOVEMENT CONTROLS - If Player inputs command and is not in dialogue
         if (GameController.MoveUp() && !Core.DialogueManagers[(int)_playerIndex].IsOpen)
         {
 
             nextPosition.Y = _position.Y - MOVEMENT_SPEED;
+            //Calculate origin (top-left) for interaction box depending on direction player is facing
             currentDirection = new Vector2((_position.X), (_position.Y - 50));
+            //Build interact box at new origin
             _interactBox = new RectZone((int)currentDirection.X, (int)currentDirection.Y, (int)_sprite.Width, 120, ZoneType.Path, true);//Reposition zone for object Interaction to match player orientation - UP
         }
         if (GameController.MoveDown()  && !Core.DialogueManagers[(int)_playerIndex].IsOpen)
@@ -146,13 +152,16 @@ public class Player1 : Players
         _sprite.Update(gameTime);
 
         // Handle any player input
-        HandleInput();
+        if(!Core.DialogueManagers[(int)_playerIndex].IsOpen)
+            HandleInput();
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
         //Render Player1 sprite, hitbox, and interaction zone
         _sprite.Draw(Core.SpriteBatch, _position);
+        
+        //Use Disjoint Draw method of RectZone so draw hitbox and interact zone at dynamic positions
         _hitbox.DisjointDraw(Core.SpriteBatch,new Vector2(_position.X, _position.Y + (int)_sprite.Height * 2/3), Core._pixel, GameController.DebugToggle(),new Color(255, 0, 0, 128) );//Hitbox for collision detection
         _interactBox.DisjointDraw(Core.SpriteBatch, currentDirection, Core._pixel, GameController.DebugToggle(), new Color(0, 255, 0, 128));//Interaction zone used for player-object interactions
 

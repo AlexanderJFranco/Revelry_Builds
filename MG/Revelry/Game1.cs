@@ -18,7 +18,6 @@ public class Game1 : Core
     private Player1 _player1;
     private Tilemap _tilemap;
     private Vendor _vendor;
-    private DialogueManager _dialogueManager;
 
     public Game1() : base("Revelry", DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, DEFAULT_FULLSCREEN)
     {
@@ -27,11 +26,12 @@ public class Game1 : Core
 
     protected override void Initialize()
     {
+         
         base.Initialize();
-        //_dialogueManager = Core.DialogueManager;
-        //_dialogueManager.Initialize();
+
         _vendor = new Vendor(Core.ScriptManager.GetScript(Core.scriptsFolder, "vendor.lua"));
         _vendor.Initialize();
+
         _player1.Initialize(Microsoft.Xna.Framework.Vector2.Zero);
         
     }
@@ -48,9 +48,10 @@ public class Game1 : Core
 
         //create player instance
         _player1 = new Player1(player_animation, PlayerIndex.One);
+
+        //Build tilemap for scene
         _tilemap = Tilemap.FromFile(Content, "images/dev_assets/tilesets/dev_grass-definition.xml");
         _tilemap.Scale = new Microsoft.Xna.Framework.Vector2(4.0f, 4.0f);
-
 
     }
 
@@ -59,20 +60,10 @@ public class Game1 : Core
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        if (Core.DialogueManagers[0].IsOpen)
-    {
-        if (GameController.Action() && Core.DialogueManagers[0].IsNodeFinished() == true)
-        {
-            Core.DialogueManagers[0].AdvanceDialogue();
-        }
-    }
-    else
-    {
         _player1.Update(gameTime);
-    }
-        
         _vendor.Update(gameTime);
-        Core.DialogueManagers[0].Update(gameTime, GameController.HoldCancel()); 
+        Core.DialogueManagers[0].Update(gameTime, GameController.Action() ,GameController.HoldCancel()); 
+
         // global update
         base.Update(gameTime);
     }
@@ -87,7 +78,7 @@ public class Game1 : Core
         _tilemap.Draw(Core.SpriteBatch);
         _vendor.Draw(Core.SpriteBatch);
         _player1.Draw(Core.SpriteBatch);
-        //_dialogueManager.Draw(Core.SpriteBatch);
+       
         DialogueManagers[0].Draw(Core.SpriteBatch);
         
         base.Draw(gameTime);

@@ -8,6 +8,7 @@ using MonoGameLibrary.Input;
 using MonoGameLibrary.Graphics;
 using MoonSharp.Interpreter;
 using Microsoft.Xna.Framework.Input;
+using MonoGameLibrary.Dialogue;
 
 namespace MonoGameLibrary.Utilities;
 
@@ -17,6 +18,7 @@ public class DialogueBox
 
     private string _fullText;
     private string _visibleText;
+    private string _speaker;
     private float _charTimer;
     private int _charIndex;
 
@@ -30,10 +32,6 @@ public class DialogueBox
 
     private double _timePerChar = .05; // seconds per letter
 
-    
-
-
-
     public DialogueBox()
     {
         Script _script = Core.ScriptManager.GetScript(Core.scriptsFolder, "vendor.lua");
@@ -41,14 +39,14 @@ public class DialogueBox
         _dialogueBox = atlas.CreateAnimatedSprite("box-animation");
         _dialogueBox.Scale = new Microsoft.Xna.Framework.Vector2(1.0f, 1.0f);
         _position = new Vector2(100, 450);
-
     }
 
-    public void Open(string text)
+    public void Open(DialogueNode node)
     {
         this._isOpen = true;
         _isFinished = false;
-        _fullText = text;
+        _fullText = node.Text;
+        _speaker = node.Speaker;
         _visibleText = "";
         _charTimer = 0;
         _charIndex = 0;
@@ -94,6 +92,7 @@ public class DialogueBox
         if (this._isOpen)
         {
             _dialogueBox.Draw(Core.SpriteBatch, _position);
+            spriteBatch.DrawString(_font, _speaker, _position + new Vector2(20, -40), Color.Black);
             spriteBatch.DrawString(_font, _visibleText, _position + new Vector2(20, 20), Color.White);
         }
 
