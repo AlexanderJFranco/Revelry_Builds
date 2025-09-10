@@ -3,8 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using MoonSharp.Interpreter;
 using MonoGameLibrary.Dialogue;
 using System.Collections.Generic;
-using MonoGameLibrary.Input;
-using Microsoft.Xna.Framework.Input;
+using System.Linq;
+using System;
+
 namespace MonoGameLibrary.Utilities;
 
 /*Summary
@@ -16,9 +17,9 @@ public class DialogueManager
     public DialogueBox _dialogueBox;
     private DialogueNode _currentNode;
     private Dictionary<string,DialogueNode> _dialoguePath;
-    private static KeyboardInfo s_keyboard => Core.Input.Keyboard;
-    private static GamePadInfo s_gamePad => Core.Input.GamePads[(int)PlayerIndex.One];
-    
+    private bool _awaitingChoice;
+    public bool AwaitingChoice => _awaitingChoice;
+ 
   public bool IsOpen = false;
 
   public DialogueManager()
@@ -29,47 +30,59 @@ public class DialogueManager
   {
     _dialogueBox = new DialogueBox();
     _dialogueBox.LoadContent();
+    _awaitingChoice = false;
   }
   public void Update(GameTime gameTime, bool proceed, bool skip)
   {
     IsOpen = _dialogueBox.IsOpen;
-
+    //Update dialogue box while open
     if (_dialogueBox.IsOpen)
     {
       _dialogueBox.Update(gameTime, skip);
     }
-
-    if (Core.DialogueManagers[0].IsOpen)
-    {
-      if (proceed && Core.DialogueManagers[0].IsNodeFinished() == true)
-      {
-        Core.DialogueManagers[0].AdvanceDialogue();
-      }
-    }
-
-
   }
   public void StartDialogue()
   {
+    if (_currentNode.Choices.Any())
+    {
+      _awaitingChoice = true;
+    }
     _dialogueBox.Open(_currentNode);
   }
+public static readonly Dictionary<string, Vector2> Anchor = new Dictionary<string, Vector2>
+    {
+        { "top",    new Vector2(100, 60) },
+        { "bottom",  new Vector2(100, 450) }
+    };
   public void AdvanceDialogue()
   {
 
+    _awaitingChoice = _currentNode.Choices.Any();
+
     //Set current node to next node in path
-    _currentNode = _dialoguePath[_currentNode.Next];
+    if (_currentNode.Next != null)
+      _currentNode = _dialoguePath[_currentNode.Next];
+
+    else
+      _currentNode = _dialoguePath[_currentNode.Choices[_dialogueBox.ChoiceIndex].Next];
 
     //If current node is end of dialogue Path, End dialogue
     if (_currentNode.Key.Equals("end_dialogue")) { EndDialogue(); }
 
     //Else open dialogue box with new node
     else { _dialogueBox.Open(_currentNode); }
-    
-    
+
+    if (_currentNode.Choices.Any())
+    {
+      _awaitingChoice = true;
+
+    }
+
   }
   public void EndDialogue()
   {
     _dialogueBox.Close();
+    
   }
   public void LoadDialogue(Table dialogueTable)
   {
@@ -80,24 +93,17 @@ public class DialogueManager
 
       string key = pair.Key.String;
       Table nodeTable = pair.Value.Table;
-
+      List<DialogueChoice> choices = new();
 
       if (nodeTable.Get("choices").Type == DataType.Table)
       {
-        var choices = new List<Dictionary<string, string>>();
+        
         Table choicesTable = nodeTable.Get("choices").Table;
 
         foreach (var choicePair in choicesTable.Pairs)
         {
           var choiceTable = choicePair.Value.Table;
-
-          var dict = new Dictionary<string, string>
-                {
-                    { "text", choiceTable.Get("text").String },
-                    { "next", choiceTable.Get("next").String }
-                };
-
-          choices.Add(dict);
+          choices.Add(new DialogueChoice(choiceTable.Get("text").String, choiceTable.Get("next").String));
         }
       }
 
@@ -109,7 +115,8 @@ public class DialogueManager
         Speaker = nodeTable.Get("speaker").String,
         Text = nodeTable.Get("text").String,
         Next = nodeTable.Get("next").String,
-        
+        Choices = choices,
+        Position = Anchor[nodeTable.Get("position").String]
         
       };
       
@@ -128,8 +135,22 @@ public class DialogueManager
   {
     return _dialogueBox.IsFinished;
   }
- 
+  public void SelectChoice()
+  {
+    _currentNode.Next = _currentNode.Choices[_dialogueBox.ChoiceIndex].Next;
+    AdvanceDialogue();
+  }
+  public void ChoiceUp()
+  {
+    _dialogueBox.ChoiceUp();
+  }
+  public void ChoiceDown()
+  {
+    _dialogueBox.ChoiceDown();
+  }
   
+
   public bool HasChoices => _currentNode?.Choices?.Count > 0;
     
   }
+

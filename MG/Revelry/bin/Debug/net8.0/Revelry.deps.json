@@ -81,7 +81,7 @@
           "runtimes/win-x64/native/openal.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "1.23.1.0"
           }
         }
       },
@@ -100,7 +100,7 @@
           "runtimes/win-x64/native/SDL2.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "2.32.2.0"
           }
         }
       },
@@ -131,10 +131,7 @@
           "MoonSharp": "2.0.0"
         },
         "runtime": {
-          "MonoGameLibrary.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "MonoGameLibrary.dll": {}
         }
       }
     }

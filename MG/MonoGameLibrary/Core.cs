@@ -103,6 +103,7 @@ public class Core : Game
 
         // Set the window title.
         Window.Title = title;
+        Window.AllowUserResizing = true;
 
         // Set the core's content manager to a reference of the base Game's
         // content manager.

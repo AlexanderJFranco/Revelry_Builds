@@ -10,10 +10,12 @@ public abstract class Interactable
 {
     //Collision hitbox for object
     public RectZone Hitbox { get; protected set; }
+    public float _depth;
     //Interact function for when player actions object
     public abstract void Interact(PlayerIndex playerIndex);
     //Initialize object
     public abstract void Initialize();
     public abstract void Update(GameTime gameTime);
     public abstract void Draw(SpriteBatch? SpriteBatch);
+    
 }

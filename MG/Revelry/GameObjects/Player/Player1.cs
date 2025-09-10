@@ -8,8 +8,10 @@ using MonoGameLibrary.ObjecTypes;
 
 namespace Revelry.GameObjects;
 
-public class Player1 : Players
+public class Player1 : Players, IDrawableEntity
 {
+    public Vector2 Position => _position;
+    public float Depth => Position.Y + _sprite.Height;
     private static readonly TimeSpan s_movementTime = TimeSpan.FromMilliseconds(200);
 
     // The amount of time that has elapsed since the last movement update.
@@ -35,11 +37,12 @@ public class Player1 : Players
     public Vector2 currentDirection;
 
     public Vector2 nextPosition = Vector2.Zero;
-      
+
     public Player1(AnimatedSprite sprite, PlayerIndex playerIndex)
     {
         _sprite = sprite;
         _playerIndex = playerIndex;
+        _depth = _position.Y + (int)_sprite.Height;
     }
 
     public void Initialize(Vector2 startingPosition)
@@ -108,7 +111,12 @@ public class Player1 : Players
             var interactable = Core.ZoneManager.CheckInteractions(_interactBox);
             //Run interactable interact function
             if (interactable != null) { interactable.Interact(_playerIndex); }
-        }  
+        }
+        if (GameController.ToggleFullScreen())
+        {
+            Core.Graphics.IsFullScreen = !Core.Graphics.IsFullScreen;
+            Core.Graphics.ApplyChanges();
+        }
 
 
         // Keep the horizontal test at the player's next X, but Y starts halfway down the sprite
@@ -146,14 +154,39 @@ public class Player1 : Players
         
     }
 
+    private void HandleDialogueInput()
+    {
+        if (Core.DialogueManagers[(int)_playerIndex].AwaitingChoice && Core.DialogueManagers[(int)_playerIndex].IsNodeFinished())
+        {
+            if (GameController.DialogueUp()) { Core.DialogueManagers[(int)_playerIndex].ChoiceUp(); }
+            if (GameController.DialogueDown()) { Core.DialogueManagers[(int)_playerIndex].ChoiceDown(); }
+            
+                
+
+        }
+        if (GameController.DialogueAction() && Core.DialogueManagers[(int)_playerIndex].IsNodeFinished())
+        {
+            Core.DialogueManagers[(int)_playerIndex].AdvanceDialogue();
+        }
+           
+        
+        
+    }
     public void Update(GameTime gameTime)
     {
         // Update the animated sprite.
         _sprite.Update(gameTime);
 
         // Handle any player input
-        if(!Core.DialogueManagers[(int)_playerIndex].IsOpen)
+        if (!Core.DialogueManagers[(int)_playerIndex].IsOpen)
             HandleInput();
+        if( Core.DialogueManagers[(int)_playerIndex].IsOpen)
+            HandleDialogueInput();
+        
+            
+        Core.DialogueManagers[(int)_playerIndex].Update(gameTime, GameController.DialogueAction(), GameController.HoldCancel());
+        _depth = _position.Y + (int)_sprite.Height;
+        
     }
 
     public void Draw(SpriteBatch spriteBatch)

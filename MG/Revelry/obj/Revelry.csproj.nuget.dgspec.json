@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/Revelry.csproj": {}
+    "C:\\Repo\\Revelry_Builds\\MG\\Revelry\\Revelry.csproj": {}
   },
   "projects": {
-    "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/MonoGameLibrary.csproj": {
+    "C:\\Repo\\Revelry_Builds\\MG\\MonoGameLibrary\\MonoGameLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/MonoGameLibrary.csproj",
+        "projectUniqueName": "C:\\Repo\\Revelry_Builds\\MG\\MonoGameLibrary\\MonoGameLibrary.csproj",
         "projectName": "MonoGameLibrary",
-        "projectPath": "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/MonoGameLibrary.csproj",
-        "packagesPath": "/Users/ajf/.nuget/packages/",
-        "outputPath": "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/obj/",
+        "projectPath": "C:\\Repo\\Revelry_Builds\\MG\\MonoGameLibrary\\MonoGameLibrary.csproj",
+        "packagesPath": "C:\\Users\\Alexa\\.nuget\\packages\\",
+        "outputPath": "C:\\Repo\\Revelry_Builds\\MG\\MonoGameLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/ajf/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Alexa\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -37,8 +37,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -65,36 +64,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.19, 8.0.19]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.19, 8.0.19]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/Revelry.csproj": {
+    "C:\\Repo\\Revelry_Builds\\MG\\Revelry\\Revelry.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/Revelry.csproj",
+        "projectUniqueName": "C:\\Repo\\Revelry_Builds\\MG\\Revelry\\Revelry.csproj",
         "projectName": "Revelry",
-        "projectPath": "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/Revelry.csproj",
-        "packagesPath": "/Users/ajf/.nuget/packages/",
-        "outputPath": "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/Revelry/obj/",
+        "projectPath": "C:\\Repo\\Revelry_Builds\\MG\\Revelry\\Revelry.csproj",
+        "packagesPath": "C:\\Users\\Alexa\\.nuget\\packages\\",
+        "outputPath": "C:\\Repo\\Revelry_Builds\\MG\\Revelry\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/ajf/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Alexa\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -106,8 +95,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/MonoGameLibrary.csproj": {
-                "projectPath": "/Users/ajf/Desktop/Code/Repos/Revelry_Builds/MG/MonoGameLibrary/MonoGameLibrary.csproj"
+              "C:\\Repo\\Revelry_Builds\\MG\\MonoGameLibrary\\MonoGameLibrary.csproj": {
+                "projectPath": "C:\\Repo\\Revelry_Builds\\MG\\MonoGameLibrary\\MonoGameLibrary.csproj"
               }
             }
           }
@@ -121,8 +110,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -152,26 +140,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.19, 8.0.19]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.osx-x64",
-              "version": "[8.0.19, 8.0.19]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.19, 8.0.19]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

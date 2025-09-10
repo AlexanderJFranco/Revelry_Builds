@@ -7,7 +7,7 @@ using MoonSharp.Interpreter;
 
 namespace Revelry.GameObjects;
 
-public class Vendor : Interactable
+public class Vendor : Interactable, IDrawableEntity
 {
     //Declar object parameters
     private Vector2 _position;
@@ -19,7 +19,8 @@ public class Vendor : Interactable
     public ZoneType _physics;
     public bool _isTalking = false;
 
-
+    public Vector2 Position => _position;
+    public float Depth => Position.Y + _sprite.Height;
 
     //Constructor
     public Vendor(Script script)
@@ -64,14 +65,17 @@ public class Vendor : Interactable
 
         //Assign inherited HitBox (Interactable Class)
         int _hitboxx = (int)_position.X;
-        int _hitboxy = (int)_position.Y + (int)_sprite.Height * (2/3);
-        Hitbox = new RectZone(_hitboxx, _hitboxy, (int)_sprite.Width, (int)(_sprite.Height)/3, ZoneType.Solid, _debugStatus, _debugShader);
+        int _hitboxy = (int)_position.Y + (int)_sprite.Height * (2 / 3);
+        Hitbox = new RectZone(_hitboxx, _hitboxy, (int)_sprite.Width, (int)(_sprite.Height) / 3, ZoneType.Solid, _debugStatus, _debugShader);
         
+        //Initialize depth
+        _depth = _position.Y + (int)_sprite.Height;
     }
 
     public override void Update(GameTime gameTime)
     {
-        _sprite.Update(gameTime);      
+        _sprite.Update(gameTime);    
+        _depth = _position.Y + (int)_sprite.Height;
         
     }
 

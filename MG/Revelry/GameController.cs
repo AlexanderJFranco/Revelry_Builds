@@ -84,8 +84,28 @@ public static class GameController
                s_gamePad.WasButtonJustPressed(Buttons.A);
     }
 
+    public static bool DialogueAction()
+    {
+        return s_keyboard.WasKeyJustPressed(Keys.Enter) ||
+               s_gamePad.WasButtonJustPressed(Buttons.A);
+    }
+    public static bool DialogueUp()
+    {
+        return s_keyboard.WasKeyJustPressed(Keys.W) ||
+           GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed;
+    }
+    public static bool DialogueDown()
+    {
+        return s_keyboard.WasKeyJustPressed(Keys.S) ||
+           GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed;
+    }
     public static bool HoldCancel()
     {
-        return Keyboard.GetState().IsKeyDown(Keys.X);
+        return s_keyboard.WasKeyJustPressed(Keys.X);
+    }
+    public static bool ToggleFullScreen()
+    {
+        return (s_keyboard.WasKeyJustPressed(Keys.LeftAlt) && s_keyboard.WasKeyJustPressed(Keys.Enter)||
+        s_keyboard.WasKeyJustPressed(Keys.RightAlt) && s_keyboard.WasKeyJustPressed(Keys.Enter));
     }
 }
