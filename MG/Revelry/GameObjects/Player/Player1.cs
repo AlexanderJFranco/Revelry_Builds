@@ -23,6 +23,7 @@ public class Player1 : Players, IDrawableEntity
 
     // The AnimatedSprite used when drawing each slime segment
     private AnimatedSprite _sprite;
+    private AnimatedSprite _hairSprite;
 
     // Speed multiplier when moving.
     private const float MOVEMENT_SPEED = 5.0f;
@@ -56,10 +57,14 @@ public class Player1 : Players, IDrawableEntity
         _movementTimer = TimeSpan.Zero;
 
         //Build area to serve as player object hitbox
-        _hitbox = new RectZone((int)_position.X, (int)_position.Y + ((int)_sprite.Height), (int)_sprite.Width, (int)_sprite.Height/3, ZoneType.Path, true);
+        _hitbox = new RectZone((int)_position.X, (int)_position.Y + ((int)_sprite.Height), (int)_sprite.Width, (int)_sprite.Height / 3, ZoneType.Path, true);
         //Build area to serve as player object interaction range
         _interactBox = new RectZone((int)_position.X, (int)_position.Y, (int)_sprite.Width, (int)_sprite.Height, ZoneType.Path, true);
-        
+
+        // Hair Atlas
+        TextureAtlas atlas = TextureAtlas.FromFile(Core.Content, "images/dev_assets/hair_atlas.xml");
+        _hairSprite = atlas.CreateAnimatedSprite("hair");
+        _hairSprite.Scale = _sprite.Scale;
     }
 
 
@@ -176,7 +181,7 @@ public class Player1 : Players, IDrawableEntity
     {
         // Update the animated sprite.
         _sprite.Update(gameTime);
-
+        _hairSprite.Update(gameTime);
         // Handle any player input
         if (!Core.DialogueManagers[(int)_playerIndex].IsOpen)
             HandleInput();
@@ -193,7 +198,7 @@ public class Player1 : Players, IDrawableEntity
     {
         //Render Player1 sprite, hitbox, and interaction zone
         _sprite.Draw(Core.SpriteBatch, _position);
-        
+        _hairSprite.Draw(Core.SpriteBatch, _position);
         //Use Disjoint Draw method of RectZone so draw hitbox and interact zone at dynamic positions
         _hitbox.DisjointDraw(Core.SpriteBatch,new Vector2(_position.X, _position.Y + (int)_sprite.Height * 2/3), Core._pixel, GameController.DebugToggle(),new Color(255, 0, 0, 128) );//Hitbox for collision detection
         _interactBox.DisjointDraw(Core.SpriteBatch, currentDirection, Core._pixel, GameController.DebugToggle(), new Color(0, 255, 0, 128));//Interaction zone used for player-object interactions

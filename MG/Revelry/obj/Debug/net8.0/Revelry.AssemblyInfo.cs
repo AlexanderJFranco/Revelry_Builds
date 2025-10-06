@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Revelry")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5dfff5f484f60a8b8419850a52339a3e4c4c1903")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce667aba89cfb078f97cdca3e30f64bc7ab9c85b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Revelry")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Revelry")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

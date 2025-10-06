@@ -23,6 +23,9 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/PeaberryMono.spritefont
 
+#begin images/dev_assets/dev_hair.png
+/copy:images/dev_assets/dev_hair.png
+
 #begin images/dev_assets/dev_textbox.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -34,6 +37,24 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:images/dev_assets/dev_textbox.png
+
+#begin images/dev_assets/hair_atlas.xml
+/copy:images/dev_assets/hair_atlas.xml
+
+#begin images/dev_assets/player_base_atlas.xml
+/copy:images/dev_assets/player_base_atlas.xml
+
+#begin images/dev_assets/Player_Base.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/dev_assets/Player_Base.png
 
 #begin images/dev_assets/t1_atlas.png
 /copy:images/dev_assets/t1_atlas.png
@@ -67,4 +88,31 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:images/dev_assets/tilesets/dev_tileset.png
+
+#begin images/Player/p1_atlas.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/Player/p1_atlas.png
+
+#begin images/Player/p1_atlas.xml
+/copy:images/Player/p1_atlas.xml
+
+#begin images/Player/Player1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/Player/Player1.png
 

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas>
+    <Texture>images/Player/Player1</Texture>
+    <Regions>
+        <Region name="player1-idle-1" x="0" y="0" width="32" height="32" />
+        <Region name="player1-idle-2" x="32" y="0" width="32" height="32" />
+        <Region name="player1-idle-3" x="64" y="0" width="32" height="32" />
+        <Region name="player1-idle-4" x="96" y="0" width="32" height="32" />
+    </Regions>
+    <Animations>
+        <Animation name="player1-idle" delay="200">
+            <Frame region="player1-idle-1" />
+            <Frame region="player1-idle-2" />
+            <Frame region="player1-idle-3" />
+            <Frame region="player1-idle-4" />
+        </Animation>
+    </Animations>
+</TextureAtlas>

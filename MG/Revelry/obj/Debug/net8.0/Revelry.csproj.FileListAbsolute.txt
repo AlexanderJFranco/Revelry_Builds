@@ -164,3 +164,10 @@ C:\Repo\Revelry_Builds\MG\Revelry\obj\Debug\net8.0\refint\Revelry.dll
 C:\Repo\Revelry_Builds\MG\Revelry\obj\Debug\net8.0\Revelry.pdb
 C:\Repo\Revelry_Builds\MG\Revelry\obj\Debug\net8.0\Revelry.genruntimeconfig.cache
 C:\Repo\Revelry_Builds\MG\Revelry\obj\Debug\net8.0\ref\Revelry.dll
+C:\Repo\Revelry_Builds\MG\Revelry\bin\Debug\net8.0\Content\images\Player\p1_atlas.xml
+C:\Repo\Revelry_Builds\MG\Revelry\bin\Debug\net8.0\Content\images\Player\p1_atlas.xnb
+C:\Repo\Revelry_Builds\MG\Revelry\bin\Debug\net8.0\Content\images\Player\Player1.xnb
+C:\Repo\Revelry_Builds\MG\Revelry\bin\Debug\net8.0\Content\images\dev_assets\Player_Base.xnb
+C:\Repo\Revelry_Builds\MG\Revelry\bin\Debug\net8.0\Content\images\dev_assets\player_base_atlas.xml
+C:\Repo\Revelry_Builds\MG\Revelry\bin\Debug\net8.0\Content\images\dev_assets\dev_hair.png
+C:\Repo\Revelry_Builds\MG\Revelry\bin\Debug\net8.0\Content\images\dev_assets\hair_atlas.xml

@@ -6,10 +6,16 @@
   <SourceFiles>
     <File>C:/Repo/Revelry_Builds/MG/Revelry/Content/Fonts/PeaberryMono.spritefont</File>
     <File>C:/Repo/Revelry_Builds/MG/Revelry/Content/images/dev_assets/dev_textbox.png</File>
+    <File>C:/Repo/Revelry_Builds/MG/Revelry/Content/images/dev_assets/Player_Base.png</File>
     <File>C:/Repo/Revelry_Builds/MG/Revelry/Content/images/dev_assets/tilesets/dev_grass_atlas.png</File>
     <File>C:/Repo/Revelry_Builds/MG/Revelry/Content/images/dev_assets/tilesets/dev_tileset.png</File>
+    <File>C:/Repo/Revelry_Builds/MG/Revelry/Content/images/Player/p1_atlas.png</File>
+    <File>C:/Repo/Revelry_Builds/MG/Revelry/Content/images/Player/Player1.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

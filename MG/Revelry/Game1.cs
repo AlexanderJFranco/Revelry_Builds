@@ -42,10 +42,10 @@ public class Game1 : Core
 
         base.LoadContent();
         // Create the texture atlas from the XML configuration file.
-        TextureAtlas atlas = TextureAtlas.FromFile(Core.Content, "images/dev_assets/t1_atlas.xml");
+        TextureAtlas atlas = TextureAtlas.FromFile(Core.Content, "images/dev_assets/player_base_atlas.xml");
 
         // Create the animated sprite for the slime from the atlas.
-        AnimatedSprite player_animation = atlas.CreateAnimatedSprite("player1-animation");
+        AnimatedSprite player_animation = atlas.CreateAnimatedSprite("player1-idle");
         player_animation.Scale = new Vector2(4.0f, 4.0f);
 
         //create player instance
@@ -54,8 +54,6 @@ public class Game1 : Core
         //Build tilemap for scene
         _tilemap = Tilemap.FromFile(Content, "images/dev_assets/tilesets/dev_grass-definition.xml");
         _tilemap.Scale = new Vector2(4.0f, 4.0f);
-
-        
 
     }
 
@@ -86,8 +84,6 @@ public class Game1 : Core
        
         DialogueManagers[0].Draw(Core.SpriteBatch);
 
-        
-        
         base.Draw(gameTime);
 
         // Always end the sprite batch when finished.
